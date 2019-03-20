@@ -10,14 +10,15 @@ using namespace cv;
 /**
  * 
  */
-class PreProcess {
-private:
+class PreProcess
+{
+  private:
 	string inputFilePath;
 	Mat inputImage;
 	Mat outputImage;
-	string outputFilePath;
+	Mat finalImage;
 
-public:
+  public:
 	/**
 	 * Default constructor
 	 */
@@ -32,17 +33,18 @@ public:
 	 */
 	bool open(string filePath);
 
+	Mat getFinalImage();
+	Mat getInputImage();
+
 	/**
 	 * Shows the interface with the input image
 	 */
-	void show();
+	void process();
 
-	static void gaussian(int size, void * data);
+	static void gaussian(int size, void *data);
 	//Dilatation vertical (kernel de 1)
-	static void dilatation(int size, void * data);
-
-
-
+	static void dilatation(int size, void *data);
+	static void save(int event, int x, int y, int flags, void *userdata);
 };
 
 #endif
